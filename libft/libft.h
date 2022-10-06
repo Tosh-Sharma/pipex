@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:13:10 by tsharma           #+#    #+#             */
-/*   Updated: 2022/08/14 16:04:01 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/10/03 15:09:50 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_atoi(const char *str);
-int		ft_superatoi(const char *str, int *numbers);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

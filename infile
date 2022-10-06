@@ -1,0 +1,46 @@
+EXECVE(2)                   BSD System Calls Manual                  EXECVE(2)
+
+NAME
+	execve -- execute a file
+
+SYNOPSIS
+	#include <unistd.h>
+
+	int
+	execve(const char *path, char *const argv[], char *const envp[]);
+
+DESCRIPTION
+	execve() transforms the calling process into a new process.  The new
+	process is constructed from an ordinary file, whose name is pointed to
+	by path, called the new process file.  This file is either an exe-
+	cutable object file, or a file of data for an interpreter.  An exe-
+	cutable object file consists of an identifying header, followed by
+	pages of data representing the initial program (text) and initialized
+	data pages.  Additional pages may be specified by the header to be
+	initialized with zero data;  see a.out(5).
+
+	An interpreter file begins with a line of the form:
+
+		#! interpreter [arg ...]
+
+	When an interpreter file is execve()'d, the system runs the specified
+	interpreter.  If any optional args are specified, they become the
+	first (second, ...) argument to the interpreter. The name of the orig-
+	inally execve()'d file becomes the subsequent argument; otherwise, the
+	name of the originally execve()'d file is the first argument.  The
+	original arguments to the invocation of the interpreter are shifted
+	over to become the final arguments.  The zeroth argument, normally the
+	name of the execve()'d file, is left unchanged.
+
+	The argument argv is a pointer to a null-terminated array of character
+	pointers to null-terminated character strings.  These strings con-
+	struct the argument list to be made available to the new process.  At
+	least one argument must be present in the array; by custom, the first
+	element should be the name of the executed program (for example, the
+	last component of path).
+
+	The argument envp is also a pointer to a null-terminated array of
+	character pointers to null-terminated strings.  A pointer to this
+	array is normally stored in the global variable environ. These strings
+	pass information to the new process that is not directly an argument
+	to the command (see environ(7)).

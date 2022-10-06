@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 16:23:49 by tsharma           #+#    #+#             */
-/*   Updated: 2022/09/02 16:27:05 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:51:59 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
+# include <fcntl.h>
+
+// TO BE REMOVED.
+# include <stdio.h>
 
 # include "libft/libft.h"
+
+void	process_pipes(char **argv);
 
 #endif
