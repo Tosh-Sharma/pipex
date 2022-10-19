@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: toshsharma <toshsharma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 16:23:49 by tsharma           #+#    #+#             */
-/*   Updated: 2022/10/06 14:51:59 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/10/18 11:07:06 by toshsharma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 
 # include "libft/libft.h"
 
-void	process_pipes(char **argv);
+typedef struct s_env
+{
+	int	    argc;
+	char    **argv;
+    char    **envp;
+}	t_env;
+
+void	process_pipes(char **argv, char **envp);
+void	process_pipes2(int argc, char **argv, char **envp);
 
 #endif

@@ -3,30 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: toshsharma <toshsharma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 16:23:13 by tsharma           #+#    #+#             */
-/*   Updated: 2022/10/06 14:51:41 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/10/18 10:55:32 by toshsharma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
-	if (argc == 5)
-		process_pipes(argv);
+	if (argc >= 5)
+		process_pipes2(argc, argv, envp);
 	else
-	{
-		if (argc < 5)
-		{
-			// Throw error. Terminate code.
-			return (0);
-		}
-		else
-		{
-			// BONUS STUFF
-		}
-	}
+		perror("Number of arguments is invalid\n");
 	return (0);
 }
