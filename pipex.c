@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshsharma <toshsharma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 16:23:13 by tsharma           #+#    #+#             */
-/*   Updated: 2022/11/07 15:38:03 by toshsharma       ###   ########.fr       */
+/*   Updated: 2022/11/07 18:28:47 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	process_pipes(int argc, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	if (argc >= 5)
+	if (argc == 5)
 		process_pipes(argc, argv, envp);
 	else
 		perror("Number of arguments is invalid\n");
