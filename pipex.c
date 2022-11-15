@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/02 16:23:13 by tsharma           #+#    #+#             */
-/*   Updated: 2022/11/07 18:28:47 by tsharma          ###   ########.fr       */
+/*   Created: 2022/11/15 15:29:50 by tsharma           #+#    #+#             */
+/*   Updated: 2022/11/15 15:45:06 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_infile(char *file_path)
 	if (id == -1)
 	{
 		perror("Could not open file\n");
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 	return (id);
 }
@@ -56,9 +56,14 @@ void	process_pipes(int argc, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
+	if (!envp || envp[0] == 0)
+		return (0);
 	if (argc == 5)
 		process_pipes(argc, argv, envp);
 	else
+	{
 		perror("Number of arguments is invalid\n");
+		exit(EXIT_FAILURE);
+	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   processor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshsharma <toshsharma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:45:10 by toshsharma        #+#    #+#             */
-/*   Updated: 2022/11/07 16:08:08 by toshsharma       ###   ########.fr       */
+/*   Updated: 2022/11/15 15:44:37 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*find_appropriate_path(char **command, char **address)
 	if (result == -1)
 	{
 		perror("command not found");
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
 	return (path);
 }
@@ -47,7 +47,10 @@ void	execute_first(t_env *input, int *fd, int infile_fd, char **address)
 
 	close(fd[0]);
 	command1 = ft_split(input->argv[2], ' ');
-	exec_path = find_appropriate_path(command1, address);
+	if (access(command1[0], X_OK) != -1)
+		exec_path = command1[0];
+	else
+		exec_path = find_appropriate_path(command1, address);
 	dup2(infile_fd, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[1]);
@@ -61,7 +64,10 @@ void	execute_second(t_env *input, int *fd, int outfile_fd, char **address)
 	char	*exec_path;
 
 	command2 = ft_split(input->argv[3], ' ');
-	exec_path = find_appropriate_path(command2, address);
+	if (access(command2[0], X_OK) != -1)
+		exec_path = command2[0];
+	else
+		exec_path = find_appropriate_path(command2, address);
 	dup2(fd[0], STDIN_FILENO);
 	dup2(outfile_fd, STDOUT_FILENO);
 	close(fd[0]);
